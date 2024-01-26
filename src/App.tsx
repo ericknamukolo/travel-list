@@ -8,7 +8,7 @@ import Item from './models/item';
 function App() {
   const initialItems: Item[] = [
     { id: 1, description: 'Passports', quantity: 2, packed: false },
-    { id: 2, description: 'Socks', quantity: 12, packed: false },
+    { id: 2, description: 'Socks', quantity: 12, packed: true },
   ];
 
   const [items, setItems] = useState(initialItems);
