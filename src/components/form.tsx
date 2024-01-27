@@ -2,9 +2,18 @@ import React from 'react';
 
 const Form: React.FC = () => {
   return (
-    <div className='add-form'>
+    <form className='add-form'>
       <h3>What do you need for your trip?</h3>
-    </div>
+      <select>
+        {Array.from({ length: 20 }, (_, i) => (
+          <option value={i + 1} key={i + 1}>
+            {i + 1}
+          </option>
+        ))}
+      </select>
+      <input type='text' placeholder='Item..' />
+      <button>Add</button>
+    </form>
   );
 };
 
