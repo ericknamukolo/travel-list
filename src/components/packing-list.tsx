@@ -5,12 +5,20 @@ import ItemC from './item';
 const ParkingList: React.FC<{
   items: Item[];
   onRemove: (id: number) => void;
-}> = ({ items, onRemove }) => {
+  onMark: (id: number) => void;
+}> = ({ items, onRemove, onMark }) => {
   return (
     <div className='list'>
       <ul>
         {items.map((item) => {
-          return <ItemC item={item} key={item.id} onRemove={onRemove} />;
+          return (
+            <ItemC
+              item={item}
+              key={item.id}
+              onRemove={onRemove}
+              onMark={onMark}
+            />
+          );
         })}
       </ul>
     </div>

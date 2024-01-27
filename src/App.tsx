@@ -35,14 +35,25 @@ function App() {
 
       return newItems;
     });
-    console.log(id);
+  }
+
+  function markItem(id: number) {
+    setItems((prevItems) => {
+      let updatedItem: Item | undefined = prevItems.find(
+        (item) => item.id === id
+      );
+      updatedItem!.packed = !updatedItem!.packed;
+      let updatedItems: Item[] = prevItems.filter((item) => item.id !== id);
+
+      return [...updatedItems, updatedItem!];
+    });
   }
   return (
     <div className='app'>
       <Logo />
       <Form onAdd={addItem} />
-      <ParkingList items={items} onRemove={removeItem} />
-      <Stats />
+      <ParkingList items={items} onRemove={removeItem} onMark={markItem} />
+      <Stats items={items} />
     </div>
   );
 }
