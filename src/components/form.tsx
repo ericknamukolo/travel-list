@@ -1,13 +1,8 @@
 import React from 'react';
 
-const Form: React.FC = () => {
-  function handleSubmit(e: any) {
-    e.preventDefault();
-    console.log(e.target[0].value);
-    console.log(e.target[1].value);
-  }
+const Form: React.FC<{ onAdd: (e: any) => void }> = ({ onAdd }) => {
   return (
-    <form className='add-form' onSubmit={handleSubmit}>
+    <form className='add-form' onSubmit={onAdd}>
       <h3>What do you need for your trip?</h3>
       <select>
         {Array.from({ length: 20 }, (_, i) => (

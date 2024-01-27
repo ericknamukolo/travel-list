@@ -12,10 +12,26 @@ function App() {
   ];
 
   const [items, setItems] = useState(initialItems);
+
+  function addItem(e: any) {
+    e.preventDefault();
+    if (e.target[1].value === '') return alert('Input an item name');
+    setItems((prevItems) => {
+      return [
+        ...prevItems,
+        {
+          id: new Date().getTime(),
+          description: e.target[1].value,
+          packed: false,
+          quantity: e.target[0].value,
+        },
+      ];
+    });
+  }
   return (
     <div className='app'>
       <Logo />
-      <Form />
+      <Form onAdd={addItem} />
       <ParkingList items={items} />
       <Stats />
     </div>
