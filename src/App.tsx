@@ -28,11 +28,20 @@ function App() {
       ];
     });
   }
+
+  function removeItem(id: number) {
+    setItems((prevItems) => {
+      const newItems: Item[] = prevItems.filter((item) => item.id !== id);
+
+      return newItems;
+    });
+    console.log(id);
+  }
   return (
     <div className='app'>
       <Logo />
       <Form onAdd={addItem} />
-      <ParkingList items={items} />
+      <ParkingList items={items} onRemove={removeItem} />
       <Stats />
     </div>
   );

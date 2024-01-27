@@ -1,7 +1,10 @@
 import React from 'react';
 import Item from '../models/item';
 
-const ItemC: React.FC<{ item: Item }> = ({ item }) => {
+const ItemC: React.FC<{ item: Item; onRemove: (id: number) => void }> = ({
+  item,
+  onRemove,
+}) => {
   return (
     <li>
       {' '}
@@ -9,7 +12,7 @@ const ItemC: React.FC<{ item: Item }> = ({ item }) => {
       <span style={item.packed ? { textDecoration: 'line-through' } : {}}>
         {item.quantity} {item.description}
       </span>
-      <button>❌</button>
+      <button onClick={() => onRemove(item.id)}>❌</button>
     </li>
   );
 };
