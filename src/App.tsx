@@ -7,14 +7,15 @@ import Item from './models/item';
 
 function App() {
   const initialItems: Item[] = [
-    { id: 1, description: 'Passports', quantity: 2, packed: false },
-    { id: 2, description: 'Socks', quantity: 12, packed: true },
+    { id: 1706444704988, description: 'Passports', quantity: 2, packed: false },
+    { id: 1706444719585, description: 'Socks', quantity: 12, packed: false },
   ];
 
   const [items, setItems] = useState(initialItems);
 
   function addItem(e: any) {
     e.preventDefault();
+    console.log(new Date().getTime());
     if (e.target[1].value === '') return alert('Input an item name');
     setItems((prevItems) => {
       return [
@@ -25,7 +26,7 @@ function App() {
           packed: false,
           quantity: e.target[0].value,
         },
-      ];
+      ].sort((a, b) => a.id - b.id);
     });
   }
 
@@ -33,7 +34,7 @@ function App() {
     setItems((prevItems) => {
       const newItems: Item[] = prevItems.filter((item) => item.id !== id);
 
-      return newItems;
+      return newItems.sort((a, b) => a.id - b.id);
     });
   }
 
@@ -45,7 +46,7 @@ function App() {
       updatedItem!.packed = !updatedItem!.packed;
       let updatedItems: Item[] = prevItems.filter((item) => item.id !== id);
 
-      return [...updatedItems, updatedItem!];
+      return [...updatedItems, updatedItem!].sort((a, b) => a.id - b.id);
     });
   }
   return (
