@@ -45,8 +45,8 @@ function App() {
       );
       updatedItem!.packed = !updatedItem!.packed;
       let updatedItems: Item[] = prevItems.filter((item) => item.id !== id);
-
-      return [...updatedItems, updatedItem!].sort((a, b) => a.id - b.id);
+      console.log(updatedItem);
+      return [...updatedItems, updatedItem!];
     });
   }
   return (
