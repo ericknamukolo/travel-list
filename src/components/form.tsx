@@ -4,11 +4,18 @@ const Form: React.FC<{ onAdd: (e: any | null) => void }> = ({ onAdd }) => {
   const [des, setDes] = useState('');
   const [option, setOption] = useState('1');
 
-  function addItem() {
-    // onAdd();
+  function addItem(e: any) {
+    onAdd(e);
+    setDes('');
+    setOption('1');
   }
   return (
-    <form className='add-form' onSubmit={onAdd}>
+    <form
+      className='add-form'
+      onSubmit={(e) => {
+        addItem(e);
+      }}
+    >
       <h3>What do you need for your trip?</h3>
       <select value={option} onChange={(e) => setOption(e.target.value)}>
         {Array.from({ length: 20 }, (_, i) => (
