@@ -5,7 +5,7 @@ import ItemC from './item';
 const ParkingList: React.FC<{
   items: Item[];
   onRemove: (id: number) => void;
-  onMark: (id: number) => void;
+  onMark: (id: number, mark: string) => void;
 }> = ({ items, onRemove, onMark }) => {
   return (
     <div className='list'>

@@ -38,15 +38,14 @@ function App() {
     });
   }
 
-  function markItem(id: number) {
-    setItems((prevItems) => {
-      let updatedItem: Item | undefined = prevItems.find(
-        (item) => item.id === id
+  function markItem(id: number, mark: string) {
+    console.log(mark);
+    setItems((prevState) => {
+      let item: Item = prevState.find((item) => item.id === id)!;
+      item.packed = mark === 'off';
+      return [...prevState.filter((item) => item.id !== id), item].sort(
+        (a, b) => a.id - b.id
       );
-      updatedItem!.packed = !updatedItem!.packed;
-      let updatedItems: Item[] = prevItems.filter((item) => item.id !== id);
-      console.log(updatedItem);
-      return [...updatedItems, updatedItem!];
     });
   }
   return (
