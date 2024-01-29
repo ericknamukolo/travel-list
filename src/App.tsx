@@ -43,7 +43,9 @@ function App() {
     setItems((prevState) => {
       let item: Item = prevState.find((item) => item.id === id)!;
       item.packed = mark === 'off';
-      return [...prevState.filter((item) => item.id !== id), item];
+      return [...prevState.filter((item) => item.id !== id), item].sort(
+        (a, b) => a.id - b.id
+      );
     });
   }
   return (
