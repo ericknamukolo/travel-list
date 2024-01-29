@@ -42,7 +42,7 @@ function App() {
     console.log(mark);
     setItems((prevState) => {
       let item: Item = prevState.find((item) => item.id === id)!;
-      item.packed = mark === 'on';
+      item.packed = mark === 'off';
       return [...prevState.filter((item) => item.id !== id), item];
     });
   }

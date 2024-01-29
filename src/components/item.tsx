@@ -12,6 +12,7 @@ const ItemC: React.FC<{
         type='checkbox'
         name='myCheckbox'
         checked={item.packed}
+        value={item.packed ? 'on' : 'off'}
         onChange={(val) => onMark(item.id, val.target.value)}
       ></input>
       <span style={item.packed ? { textDecoration: 'line-through' } : {}}>
